@@ -65,9 +65,9 @@ class ModuleManageCell:
             return
 
         # 如果使用计数器大于 0 ，说明已经启动
-        if self.__used_count > 0:
-            return
         self.__used_count += 1
+        if self.__used_count > 1:
+            return
 
         # 0. 如果当前模块状态不是在停止状态 则不能停止
         cur_status = self._status
