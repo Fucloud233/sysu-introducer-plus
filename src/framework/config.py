@@ -99,7 +99,10 @@ class ModuleConfig:
 def load_config(system_path: str, user_path: str, user_format_path):
     # system 提供所有配置信息的初始值，user 提供可供用户配置的用户
     system_data: ConfigType = load_json(system_path)
-    raw_user_data: ConfigType = load_json(user_path)
+    try:
+        raw_user_data: ConfigType = load_json(user_path)
+    except FileNotFoundError:
+        raw_user_data = {}
     # 原始的配置文件，此后需要转换为 ConfigItemFormat 对象
     raw_user_format: ConfigType = load_json(user_format_path)
 
