@@ -59,7 +59,8 @@ def handle_status(args: List[str]):
 
         return cell
 
-    print(generate_table(info_list, args[1:], translate_cell))
+    keys = args[1:] if len(args[1:]) > 0 else None
+    print(generate_table(info_list, keys, translate_cell))
 
 
 def handle_exit(_ignored):
